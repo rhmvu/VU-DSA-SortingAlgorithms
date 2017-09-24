@@ -43,7 +43,7 @@ public class Main implements DS1Interface  {
 
     private int[] mergeSortImplementation(int p, int r){
         if(p<r){
-            int middleOfArray = (int) ((p+(r-p/2))+0.5);
+            int middleOfArray = (int) Math.floor(p+r/2);
             mergeSortImplementation(p,middleOfArray);
             mergeSortImplementation(middleOfArray+1,r);
             merge(p,middleOfArray,r);
@@ -53,19 +53,32 @@ public class Main implements DS1Interface  {
     }
 
     private void merge(int p, int q, int r){
-        int[] temp = new int[array.length];
-        int tempIndex = 0;
-        int rightArrayIndex = q+1;
-        int leftArrayIndex = p;
-        while(leftArrayIndex <=q ||rightArrayIndex <=r){
-            if (array[leftArrayIndex]<= array[rightArrayIndex]) {
-                temp[tempIndex] =  array[leftArrayIndex];
+        int leftArrayMax = q-p+1;
+        int rightArrayMax = r-q;
+        int[] leftArray = new int[leftArrayMax];
+        int[] rightArray = new int[rightArrayMax];
+
+        for(int i = 0;i< leftArrayMax;i++){
+            leftArray[i] = array[p+i];
+        }
+        for(int i = 0;i< rightArrayMax;i++){
+            rightArray[i] = array[q+1+i];
+        }
+
+
+
+      //  int[] temp = new int[array.length];
+       // int tempIndex = 0;
+        int rightArrayIndex = 0;
+        int leftArrayIndex = 0;
+        for(int k = p;k<r; k++){
+            if (leftArray[leftArrayIndex]<= rightArray[rightArrayIndex]) {
+                array[k] = leftArray[leftArrayIndex];
                 leftArrayIndex+=1;
-            }else{
-                temp[tempIndex] = array[rightArrayIndex];
-                rightArrayIndex+=1;
+            }else {
+                array[k] = rightArray[rightArrayIndex];
+                rightArrayIndex += 1;
             }
-            tempIndex+=1;
         }
     }
     @Override
