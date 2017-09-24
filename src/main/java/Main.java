@@ -7,13 +7,32 @@ import java.util.Scanner;
 
 public class Main implements DS1Interface  {
 
+    int[] array;
 
     /* Implement these methods */
 
     @Override
     public int[] insertionSort(int[] input) {
-        return new int[0];
+        array = new int[input.length];
+        array = input;
+
+        int i;
+        int j;
+        int key;
+        for (j = 1; j < array.length; j++) {
+            i = j - 1;
+            key = array[j];
+
+            while (i >= 0 && array[i] > key) {
+
+                array[i+1] = array[i];
+                i = i-1;
+            }
+            array[i+1] = key;
+        }
+        return array;
     }
+
 
 
     @Override
