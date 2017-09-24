@@ -37,10 +37,37 @@ public class Main implements DS1Interface  {
 
     @Override
     public int[] mergeSort(int[] input) {
-        return new int[0];
+        return mergeSortImplementation(0,input.length);
     }
 
 
+    private int[] mergeSortImplementation(int p, int r){
+        if(p<r){
+            int middleOfArray = (int) ((p+(r-p/2))+0.5);
+            mergeSortImplementation(p,middleOfArray);
+            mergeSortImplementation(middleOfArray+1,r);
+            merge(p,middleOfArray,r);
+
+        }
+        return array;
+    }
+
+    private void merge(int p, int q, int r){
+        int[] temp = new int[array.length];
+        int tempIndex = 0;
+        int rightArrayIndex = q+1;
+        int leftArrayIndex = p;
+        while(leftArrayIndex <=q ||rightArrayIndex <=r){
+            if (array[leftArrayIndex]<= array[rightArrayIndex]) {
+                temp[tempIndex] =  array[leftArrayIndex];
+                leftArrayIndex+=1;
+            }else{
+                temp[tempIndex] = array[rightArrayIndex];
+                rightArrayIndex+=1;
+            }
+            tempIndex+=1;
+        }
+    }
     @Override
     public int[] heapSort(int[] input) {
         return new int[0];
