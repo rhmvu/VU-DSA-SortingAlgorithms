@@ -32,12 +32,54 @@ public class Main implements DS1Interface  {
         }
         return array;
     }
-
-
-
+    
     @Override
     public int[] mergeSort(int[] input) {
-        return new int[0];
+        array = new int[input.length];
+        for(int i = 0; i<input.length; i++){
+            array[i] = input[i];
+        }
+        mergeSortImplementation(0,input.length-1);
+        return array;
+    }
+
+
+    private void mergeSortImplementation(int p, int r){
+        if(p<r) {
+            int middleOfArray = (int) Math.floor((p + r) / 2);
+            mergeSortImplementation(p, middleOfArray);
+            mergeSortImplementation(middleOfArray + 1, r);
+            merge(p, middleOfArray, r);
+        }
+    }
+
+    private void merge(int p, int q, int r){
+        int leftArrayMax = q-p+1;
+        int rightArrayMax = r-q;
+        int[] leftArray = new int[leftArrayMax+1];
+        int[] rightArray = new int[rightArrayMax+1];
+
+        rightArray[rightArrayMax] = Integer.MAX_VALUE;
+        leftArray[leftArrayMax] = Integer.MAX_VALUE;
+
+        for(int i = 0;i< leftArrayMax;i++){
+            leftArray[i] = array[p+i];
+        }
+        for(int j = 0;j< rightArrayMax;j++){
+            rightArray[j] = array[q+1+j];
+        }
+
+        int rightArrayIndex = 0;
+        int leftArrayIndex = 0;
+        for(int k = p;k<=r; k++){
+            if (leftArray[leftArrayIndex]<= rightArray[rightArrayIndex]) {
+                array[k] = leftArray[leftArrayIndex];
+                leftArrayIndex+=1;
+            }else {
+                array[k] = rightArray[rightArrayIndex];
+                rightArrayIndex += 1;
+            }
+        }
     }
 
 
@@ -47,7 +89,6 @@ public class Main implements DS1Interface  {
         heap.sort();
         return heap.toArray();
     }
-
 
 
 
