@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/*By Ruben van der Ham and Kostas Moumtzakis
+* VU Amsterdam CS2
+* 25 September 2017*/
+
 public class Main implements DS1Interface  {
 
     int[] array;

@@ -1,3 +1,7 @@
+/*By Ruben van der Ham and Kostas Moumtzakis
+* VU Amsterdam CS2
+* 25 September 2017*/
+
 class Heap {
 
     static final int ROOT = 1;
