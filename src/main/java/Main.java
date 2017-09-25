@@ -49,6 +49,7 @@ public class Main implements DS1Interface  {
         }*/
         Heap heap = new Heap(input);
         heap.sort();
+        //heap.printArray(heap.toArray());
         return heap.toArray();
     }
 
