@@ -10,9 +10,6 @@ class Heap {
         for(int i = 1; i<=input.length;i++){
             array[i] = input[i-1];
         }
-        printArray(input,0);
-        printArray(array,1);
-        System.out.println();
         length = input.length;
         heapSize = length;
     }
@@ -31,24 +28,14 @@ class Heap {
         for(int i = length; i>=2; i--){
             exchange(ROOT,i);
             heapSize -= 1;
-            printArray(array, i);
             maxHeapify(ROOT);
         }
     }
 
-    static void printArray(int arr[],int j)
-    {
-        int n = arr.length;
-        System.out.print(j+":");
-        for (int i=0; i<n; ++i)
-            System.out.print(arr[i]+" ");
-        System.out.println();
-    }
 
     void buildMaxHeap(){
         for (int i = (int) Math.floor((length)/2); i>= 1;i--){
             maxHeapify(i);
-           // printArray(toArray(),(int) Math.floor((length)/2)-i);
         }
     }
 

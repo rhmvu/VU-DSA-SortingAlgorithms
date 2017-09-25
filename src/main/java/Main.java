@@ -43,13 +43,8 @@ public class Main implements DS1Interface  {
 
     @Override
     public int[] heapSort(int[] input) {
-        /*array = new int[input.length];
-        for (int i = 0; i<input.length; i++){
-            array[i] = input[i];
-        }*/
         Heap heap = new Heap(input);
         heap.sort();
-        //heap.printArray(heap.toArray());
         return heap.toArray();
     }
 
